@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Heroic Features - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/heroic-features.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Setores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sensores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container" style="margin-top: 10px">
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="/static/img/cenoura.jpeg" style="height: 180px"  alt="">
+
+          <div class="card-body">
+            <h4 class="card-title">Setor de Cenouras </h4>
+            <p class="card-text">Descrição: Cenoura Brasilia. Precoce, com ciclo entre 85 e 95 dias. </p>
+            <p class="card-text btn-warning">Status: <span id="umidadeCenoura"> Buscando... </span></p>
+          </div>
+          <div class="card-footer">
+            <a onclick="ligarSetor1()" class="btn btn-primary" style="color:#FFFFFF">Ligar</a>
+            <a onclick="desligarSetor1()" class="btn btn-danger" style="color:#FFFFFF">Desligar</a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="/static/img/alface.jpeg" style="height: 180px" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Setor de alface</h4>
+            <p class="card-text">Descrição: Alface americana, os espaçamentos são de 35 centímetros.</p>
+            <p class="card-text btn-warning">Status: <span id="umidadeAlface"> Buscando... </span></p>
+          </div>
+          <div class="card-footer">
+            <a onclick="ligarSetor2()" class="btn btn-primary" style="color:#FFFFFF">Ligar</a>
+            <a onclick="desligarSetor2()" class="btn btn-danger" style="color:#FFFFFF">Desligar</a>
+          </div>
+        </div>
+      </div>
+     <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <img class="card-img-top" src="/static/img/couve.jpg" style="height: 180px" alt="">
+              <div class="card-body">
+                <h4 class="card-title">Setor de Couves</h4>
+                <p class="card-text">Descrição: </p>
+                <p class="card-text btn-warning">Status: <span id="umidadeColve"> Buscando... </span></p>
+              </div>
+              <div class="card-footer">
+                <a onclick="ligarSetor2()" class="btn btn-primary" style="color:#FFFFFF">Ligar</a>
+                <a onclick="desligarSetor2()" class="btn btn-danger" style="color:#FFFFFF">Desligar</a>
+              </div>
+            </div>
+     </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class=" bg-dark fixed-bottom" >
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/static/jquery/jquery.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+  <script>
+    var $server = "192.168.0.1"
+    function ligarSetor1() {
+        jQuery.ajax({
+            url: 'http://'+ $server +'/set-irrigacao-cenoura/0',
+            type: 'get',
+            contentType: 'application/json',
+            success: function (resposta){
+              alert("Irrigação para o setor Cenoura ligada")
+            },
+            error: function (resposta){
+              alert("Algo deu errado! Verifica o IP do seu servidor")
+            }
+        });
+    }
+
+    function desligarSetor1() {
+        jQuery.ajax({
+            url: 'http://'+ $server +'/set-irrigacao-cenoura/1',
+            type: 'get',
+            contentType: 'application/json',
+            success: function (resposta){
+              alert("Irrigação para o setor Cenoura desligada")
+            },
+            error: function (resposta){
+              alert("Algo deu errado! Verifica o IP do seu servidor")
+            }
+        });
+    }
+
+    function ligarSetor2() {
+        jQuery.ajax({
+            url: 'http://'+ $server +'/set-irrigacao-alface/0',
+            type: 'get',
+            contentType: 'application/json',
+            success: function (resposta){
+              alert("Irrigação para o setor Alface ligada")
+            },
+            error: function (resposta){
+              alert("Algo deu errado! Verifica o IP do seu servidor")
+            }
+        });
+    }
+
+    function desligarSetor2() {
+        jQuery.ajax({
+            url: 'http://'+ $server +'/set-irrigacao-alface/1',
+            type: 'get',
+            contentType: 'application/json',
+            success: function (resposta){
+              alert("Irrigação para o setor Alface desligada")
+            },
+            error: function (resposta){
+              alert("Algo deu errado! Verifica o IP do seu servidor")
+            }
+        });
+    }
+
+
+    function getUmidade(){
+        jQuery.ajax({
+            url: 'http://'+ $server +'/get-umidade',
+            type: 'get',
+            contentType: 'application/json',
+            success: function (resposta){
+                console.log(resposta)
+                if (resposta === "Umido") {
+                  $document.getElementById("umidadeCenoura").innerHTML = resposta
+                }
+            }
+        });
+    }
+
+    setInterval(getUmidade, 2000);
+
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+
+</html>
